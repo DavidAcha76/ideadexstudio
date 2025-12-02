@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaDex Studio - GameDex Holográfico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo animado futurista -->
+    <div class="cyber-grid"></div>
+    <div class="holo-particles"></div>
+
+    <!-- Contenedor Principal -->
+    <div class="gamedex-container">
+        <div class="console-top-bar">
+            <div class="console-led led-red"></div>
+            <div class="console-led led-yellow"></div>
+            <div class="console-led led-green"></div>
+            <div class="console-label">IdeaDex Console • Holographic GameDex</div>
+        </div>
+        <!-- Header Holográfico -->
+        <div class="holo-header">
+            <div class="header-glow"></div>
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-hologram">
+                        <span class="logo-main">IDEADEX</span>
+                        <span class="logo-sub">STUDIO</span>
+                    </div>
+                    <div class="logo-line"></div>
+                </div>
+                <div class="status-indicators">
+                    <div class="status-item">
+                        <div class="status-dot online"></div>
+                        <span class="status-text">ONLINE</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot sync"></div>
+                        <span class="status-text">SYNC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+<!-- Display Principal -->
+        <div class="console-layout">
+            <div class="console-side console-side-left" aria-label="Directional controls">
+                <div class="console-dpad" aria-label="Navegación GameDex">
+                    <button class="dpad-btn dpad-up" onclick="navigate('up')" aria-label="Arriba">▲</button>
+                    <div class="dpad-middle-row">
+                        <button class="dpad-btn dpad-left" aria-hidden="true">◀</button>
+                        <button class="dpad-btn dpad-center" onclick="showView('gamedex')" aria-label="Volver a GameDex">●</button>
+                        <button class="dpad-btn dpad-right" aria-hidden="true">▶</button>
+                    </div>
+                    <button class="dpad-btn dpad-down" onclick="navigate('down')" aria-label="Abajo">▼</button>
+                </div>
+            </div>
+            <div class="console-center">
+
+        <div class="main-display">
+            <div class="display-frame">
+                <div class="corner-ornament tl"></div>
+                <div class="corner-ornament tr"></div>
+                <div class="corner-ornament bl"></div>
+                <div class="corner-ornament br"></div>
+
+                <div class="display-screen" id="main-screen">
+                    <!-- Vista GameDex -->
+                    <div class="screen-view active" id="gamedex-view">
+                        <div class="view-header">
+                            <div class="header-line">
+                                <div class="hex-icon"></div>
+                                <h1 class="view-title">GAME DATABASE</h1>
+                            </div>
+                            <div class="stats-bar">
+                                <div class="stat-chip">
+                                    <span class="stat-label">DISCOVERED</span>
+                                    <span class="stat-value" id="games-seen">2</span>
+                                </div>
+                                <div class="stat-separator"></div>
+                                <div class="stat-chip">
+                                    <span class="stat-label">RELEASED</span>
+                                    <span class="stat-value" id="games-owned">2</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="games-list" id="games-list">
+                            <!-- Game 001 -->
+                            <div class="game-card unlocked" data-id="001" onclick="showGameDetail('001')">
+                                <div class="card-glow"></div>
+                                <div class="card-content">
+                                    <div class="card-left">
+                                        <div class="game-id">001</div>
+                                        <div class="game-sprite cyber">
+                                            <div class="sprite-glow"></div>
+                                            <div class="sprite-icon">🌃</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-right">
+                                        <h3 class="game-name">CYBER NEXUS</h3>
+                                        <div class="game-tags">
+                                            <span class="tag rpg">RPG</span>
+                                            <span class="tag action">ACTION</span>
+                                        </div>
+                                        <div class="game-status">
+                                            <span class="status-badge released">● RELEASED 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-arrow">▶</div>
+                                </div>
+                            </div>
+
+                            <!-- Game 002 -->
+                            <div class="game-card unlocked" data-id="002" onclick="showGameDetail('002')">
+                                <div class="card-glow"></div>
+                                <div class="card-content">
+                                    <div class="card-left">
+                                        <div class="game-id">002</div>
+                                        <div class="game-sprite shadow">
+                                            <div class="sprite-glow"></div>
+                                            <div class="sprite-icon">👻</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-right">
+                                        <h3 class="game-name">SHADOW REALM</h3>
+                                        <div class="game-tags">
+                                            <span class="tag horror">HORROR</span>
+                                            <span class="tag adventure">ADVENTURE</span>
+                                        </div>
+                                        <div class="game-status">
+                                            <span class="status-badge released">● RELEASED 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-arrow">▶</div>
+                                </div>
+                            </div>
+
+                            <!-- Game 003 - Locked -->
+                            <div class="game-card locked" data-id="003" onclick="showGameDetail('003')">
+                                <div class="card-glow locked-glow"></div>
+                                <div class="card-content">
+                                    <div class="card-left">
+                                        <div class="game-id">003</div>
+                                        <div class="game-sprite locked-sprite">
+                                            <div class="sprite-glow locked-glow"></div>
+                                            <div class="sprite-icon">❓</div>
+                                            <div class="lock-overlay">🔒</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-right">
+                                        <h3 class="game-name locked-name">CLASSIFIED</h3>
+                                        <div class="game-tags">
+                                            <span class="tag unknown">UNKNOWN</span>
+                                        </div>
+                                        <div class="game-status">
+                                            <span class="status-badge locked-badge">🔒 IN DEVELOPMENT</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-arrow locked-arrow">🔒</div>
+                                </div>
+                            </div>
+
+                            <!-- Game 004 - Locked -->
+                            <div class="game-card locked" data-id="004">
+                                <div class="card-glow locked-glow"></div>
+                                <div class="card-content">
+                                    <div class="card-left">
+                                        <div class="game-id">004</div>
+                                        <div class="game-sprite locked-sprite">
+                                            <div class="sprite-glow locked-glow"></div>
+                                            <div class="sprite-icon">❓</div>
+                                            <div class="lock-overlay">🔒</div>
+                                        </div>
+                                    </div>
+                                    <div class="card-right">
+                                        <h3 class="game-name locked-name">TOP SECRET</h3>
+                                        <div class="game-tags">
+                                            <span class="tag unknown">UNKNOWN</span>
+                                        </div>
+                                        <div class="game-status">
+                                            <span class="status-badge locked-badge">🔒 CLASSIFIED</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-arrow locked-arrow">🔒</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view-footer">
+                            <div class="footer-hint">
+                                <span class="hint-icon">◆</span>
+                                <span class="hint-text">SELECT GAME FOR DETAILS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista Detail -->
+                    <div class="screen-view" id="detail-view">
+                        <div class="detail-container" id="detail-container">
+                            <!-- Dinámico -->
+                        </div>
+                    </div>
+
+                    <!-- Vista About -->
+                    <div class="screen-view" id="about-view">
+                        <div class="info-view">
+                            <div class="view-header">
+                                <div class="header-line">
+                                    <div class="hex-icon"></div>
+                                    <h1 class="view-title">STUDIO INFO</h1>
+                                </div>
+                            </div>
+                            <div class="info-content">
+                                <div class="studio-badge">
+                                    <div class="badge-inner">ID</div>
+                                </div>
+                                <p class="info-description">
+                                    IdeaDex Studio is an indie game studio founded in 2020.
+                                    We create experiences that challenge the boundaries of digital entertainment.
+                                </p>
+                                <div class="info-grid">
+                                    <div class="info-stat">
+                                        <div class="stat-num">50+</div>
+                                        <div class="stat-lbl">MEMBERS</div>
+                                    </div>
+                                    <div class="info-stat">
+                                        <div class="stat-num">15</div>
+                                        <div class="stat-lbl">GAMES</div>
+                                    </div>
+                                    <div class="info-stat">
+                                        <div class="stat-num">2M+</div>
+                                        <div class="stat-lbl">PLAYERS</div>
+                                    </div>
+                                    <div class="info-stat">
+                                        <div class="stat-num">30+</div>
+                                        <div class="stat-lbl">AWARDS</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista Team -->
+                    <div class="screen-view" id="team-view">
+                        <div class="info-view">
+                            <div class="view-header">
+                                <div class="header-line">
+                                    <div class="hex-icon"></div>
+                                    <h1 class="view-title">TEAM ROSTER</h1>
+                                </div>
+                            </div>
+                            <div class="team-grid">
+                                <div class="member-card">
+                                    <div class="member-avatar director"></div>
+                                    <div class="member-name">ANA GARCÍA</div>
+                                    <div class="member-role">GAME DIRECTOR</div>
+                                    <div class="member-level">LV.99</div>
+                                </div>
+                                <div class="member-card">
+                                    <div class="member-avatar developer"></div>
+                                    <div class="member-name">CARLOS MENDOZA</div>
+                                    <div class="member-role">LEAD DEV</div>
+                                    <div class="member-level">LV.95</div>
+                                </div>
+                                <div class="member-card">
+                                    <div class="member-avatar artist"></div>
+                                    <div class="member-name">MARÍA LÓPEZ</div>
+                                    <div class="member-role">ART DIRECTOR</div>
+                                    <div class="member-level">LV.97</div>
+                                </div>
+                                <div class="member-card">
+                                    <div class="member-avatar sound"></div>
+                                    <div class="member-name">LUIS RAMÍREZ</div>
+                                    <div class="member-role">SOUND DESIGN</div>
+                                    <div class="member-level">LV.93</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vista Join -->
+                    <div class="screen-view" id="join-view">
+                        <div class="info-view">
+                            <div class="view-header">
+                                <div class="header-line">
+                                    <div class="hex-icon"></div>
+                                    <h1 class="view-title">JOIN US</h1>
+                                </div>
+                            </div>
+                            <div class="join-content">
+                                <p class="join-text">
+                                    Ready to create amazing games? We're looking for talented individuals to join our studio.
+                                </p>
+                                <a href="recruitment.html" class="cyber-button">
+                                    <span class="button-glow"></span>
+                                    <span class="button-text">VIEW POSITIONS</span>
+                                    <span class="button-arrow">→</span>
+                                </a>
+                                <div class="join-stats">
+                                    <div class="join-stat">
+                                        <span class="stat-icon">👥</span>
+                                        <span class="stat-text">50+ Interns/Year</span>
+                                    </div>
+                                    <div class="join-stat">
+                                        <span class="stat-icon">💼</span>
+                                        <span class="stat-text">85% Hiring Rate</span>
+                                    </div>
+                                    <div class="join-stat">
+                                        <span class="stat-icon">🌍</span>
+                                        <span class="stat-text">15+ Countries</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Vista Solicitud de Proyectos -->
+                    <div class="screen-view" id="request-view">
+                        <div class="info-view request-view">
+                            <div class="view-header">
+                                <div class="header-line">
+                                    <div class="hex-icon"></div>
+                                    <h1 class="view-title">REQUEST A GAME</h1>
+                                </div>
+                            </div>
+                            <div class="request-content">
+                                <p class="request-text">
+                                    Do you want IdeaDex Studio to bring your game idea to life? 
+                                    Send us the details of your project and we will contact you with a proposal.
+                                </p>
+                                <form id="request-form" class="request-form" onsubmit="submitProjectRequest(event)">
+                                    <div class="request-grid">
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-name">Your Name</label>
+                                            <input id="req-name" name="name" type="text" class="request-input" required placeholder="Full name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-email">Email</label>
+                                            <input id="req-email" name="email" type="email" class="request-input" required placeholder="you@email.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-type">Project Type</label>
+                                            <select id="req-type" name="type" class="request-select" required>
+                                                <option value="">Select...</option>
+                                                <option value="pc">PC / Console Game</option>
+                                                <option value="mobile">Mobile Game</option>
+                                                <option value="vr">VR / AR Experience</option>
+                                                <option value="serious">Serious Game / Training</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-budget">Approx. Budget (USD)</label>
+                                            <select id="req-budget" name="budget" class="request-select" required>
+                                                <option value="">Select...</option>
+                                                <option value="5k-15k">5,000 - 15,000</option>
+                                                <option value="15k-50k">15,000 - 50,000</option>
+                                                <option value="50k-150k">50,000 - 150,000</option>
+                                                <option value="150k+">150,000 or more</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-platforms">Target Platforms</label>
+                                            <input id="req-platforms" name="platforms" type="text" class="request-input" placeholder="PC, PS5, Xbox, Switch, iOS, Android...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="req-deadline">Desired Deadline</label>
+                                            <input id="req-deadline" name="deadline" type="text" class="request-input" placeholder="e.g., Q4 2025">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-full">
+                                        <label class="form-label" for="req-description">Project Description</label>
+                                        <textarea id="req-description" name="description" class="request-textarea" rows="4" required placeholder="Describe the core idea, gameplay, art style and goals of the project (min. 80 characters)."></textarea>
+                                    </div>
+                                    <div class="form-group form-group-full">
+                                        <label class="form-label" for="req-link">GDD / Reference Link (optional)</label>
+                                        <input id="req-link" name="reference" type="url" class="request-input" placeholder="Link to GDD, pitch deck or reference material">
+                                    </div>
+                                    <div class="request-actions">
+                                        <button type="submit" class="request-submit">
+                                            <span class="button-glow"></span>
+                                            <span class="button-text">SEND REQUEST</span>
+                                            <span class="button-arrow">→</span>
+                                        </button>
+                                    </div>
+                                    <div id="request-success" class="request-success" aria-live="polite">
+                                        <span class="success-icon">✔</span>
+                                        <span class="success-text">Request received! Our team will contact you soon (demo).</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Efecto Holográfico -->
+                    <div class="holo-effect"></div>
+                </div>
+            </div>
+        </div>
+
+        
+<!-- Controles Futuristas -->
+        <div class="controls-panel">
+            <div class="controls-row">
+                <button class="nav-button" onclick="showView('gamedex')">
+                    <span class="btn-icon">◆</span>
+                    <span class="btn-label">DEX</span>
+                </button>
+                <button class="nav-button" onclick="showView('about')">
+                    <span class="btn-icon">◆</span>
+                    <span class="btn-label">INFO</span>
+                </button>
+                <button class="nav-button" onclick="showView('team')">
+                    <span class="btn-icon">◆</span>
+                    <span class="btn-label">TEAM</span>
+                </button>
+                <button class="nav-button" onclick="showView('join')">
+                    <span class="btn-icon">◆</span>
+                    <span class="btn-label">INTERNS</span>
+                </button>
+                <button class="nav-button" onclick="showView('request')">
+                    <span class="btn-icon">◆</span>
+                    <span class="btn-label">REQUEST</span>
+                </button>
+            </div>
+
+            </div>
+            <div class="console-side console-side-right" aria-label="Action buttons">
+                <div class="console-actions" aria-label="Botones de acción">
+                    <button class="console-btn console-btn-a" onclick="actionButton('A')" aria-label="Aceptar / Abrir detalle">A</button>
+                    <button class="console-btn console-btn-b" onclick="actionButton('B')" aria-label="Volver">B</button>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+        <div class="footer-content">
+            <p class="footer-title">IdeaDex Studio v1.0 - Holographic Interface</p>
+            <p class="footer-hint">Use keyboard: ↑↓ Navigate • Enter: Select • ESC: Back</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

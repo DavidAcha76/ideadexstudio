@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaDex Studio - Recruitment Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="recruitment-page">
+    <div class="console-container">
+        <div class="console-screen">
+            <div class="screen-border">
+                <div class="screen-display">
+                    <div class="led-indicators">
+                        <div class="led power on"></div>
+                        <div class="led-label">PWR</div>
+                    </div>
+
+                    <div class="screen-content terminal-mode">
+                        <!-- Terminal Header -->
+                        <div class="terminal-header">
+                            <div class="terminal-title">IDEADEX RECRUITMENT TERMINAL</div>
+                            <div class="terminal-status">SYSTEM READY</div>
+                        </div>
+
+                        <!-- Intro Message -->
+                        <div class="terminal-output" id="terminal-output">
+                            <div class="output-line">
+                                <span class="prompt">$</span> INICIANDO RECRUITMENT SYSTEM...
+                            </div>
+                            <div class="output-line">
+                                <span class="prompt">$</span> CARGANDO POSICIONES DISPONIBLES...
+                            </div>
+                            <div class="output-line success">
+                                <span class="prompt">$</span> ¡SISTEMA LISTO!
+                            </div>
+                            <div class="output-line">
+                                <span class="separator">═══════════════════════════════════</span>
+                            </div>
+                            <div class="output-line center">
+                                PROGRAMA DE PASANTÍAS 2025-2026
+                            </div>
+                            <div class="output-line">
+                                <span class="separator">═══════════════════════════════════</span>
+                            </div>
+                        </div>
+
+                        <!-- Positions List -->
+                        <div class="positions-terminal" id="positions-list">
+                            <div class="position-entry" data-pos="programmer">
+                                <div class="pos-header">
+                                    <span class="pos-id">[001]</span>
+                                    <span class="pos-name">PROGRAMADOR GAMEPLAY</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ STACK: C#, Unity, Photon</div>
+                                    <div class="pos-line">├─ DURACIÓN: 6 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Junior/Mid</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('programmer')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+
+                            <div class="position-entry" data-pos="artist">
+                                <div class="pos-header">
+                                    <span class="pos-id">[002]</span>
+                                    <span class="pos-name">ARTISTA 3D</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ TOOLS: Blender, Substance</div>
+                                    <div class="pos-line">├─ DURACIÓN: 6 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Junior</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('artist')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+
+                            <div class="position-entry" data-pos="designer">
+                                <div class="pos-header">
+                                    <span class="pos-id">[003]</span>
+                                    <span class="pos-name">GAME DESIGNER</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ SKILLS: GDD, Level Design</div>
+                                    <div class="pos-line">├─ DURACIÓN: 6 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Junior</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('designer')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+
+                            <div class="position-entry" data-pos="sound">
+                                <div class="pos-header">
+                                    <span class="pos-id">[004]</span>
+                                    <span class="pos-name">SOUND DESIGNER</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ TOOLS: FL Studio, FMOD</div>
+                                    <div class="pos-line">├─ DURACIÓN: 6 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Junior/Mid</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('sound')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+
+                            <div class="position-entry" data-pos="qa">
+                                <div class="pos-header">
+                                    <span class="pos-id">[005]</span>
+                                    <span class="pos-name">QA TESTER</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ SKILLS: Testing, Documentation</div>
+                                    <div class="pos-line">├─ DURACIÓN: 3 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Entry</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('qa')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+
+                            <div class="position-entry" data-pos="marketing">
+                                <div class="pos-header">
+                                    <span class="pos-id">[006]</span>
+                                    <span class="pos-name">MARKETING DIGITAL</span>
+                                    <span class="pos-status available">DISPONIBLE</span>
+                                </div>
+                                <div class="pos-details">
+                                    <div class="pos-line">├─ SKILLS: Social Media, Community</div>
+                                    <div class="pos-line">├─ DURACIÓN: 4 meses</div>
+                                    <div class="pos-line">└─ NIVEL: Entry/Junior</div>
+                                </div>
+                                <button class="select-btn" onclick="selectPosition('marketing')">
+                                    [SELECCIONAR]
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Application Form (Hidden initially) -->
+                        <div class="application-form" id="application-form" style="display: none;">
+                            <div class="form-header">
+                                <div class="form-title">FORMULARIO DE APLICACIÓN</div>
+                                <div class="form-position" id="selected-position"></div>
+                            </div>
+
+                            <form id="recruit-form" onsubmit="submitApplication(event)">
+                                <div class="form-group">
+                                    <label class="form-label">NOMBRE COMPLETO:</label>
+                                    <input type="text" name="name" class="terminal-input" required 
+                                           placeholder="INGRESA TU NOMBRE">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">EMAIL:</label>
+                                    <input type="email" name="email" class="terminal-input" required 
+                                           placeholder="TU@EMAIL.COM">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">TELÉFONO:</label>
+                                    <input type="tel" name="phone" class="terminal-input" required 
+                                           placeholder="+591 XXXXXXXX">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">PAÍS:</label>
+                                    <input type="text" name="country" class="terminal-input" required 
+                                           placeholder="BOLIVIA">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">NIVEL DE ESTUDIOS:</label>
+                                    <select name="education" class="terminal-select" required>
+                                        <option value="">SELECCIONA...</option>
+                                        <option value="highschool">SECUNDARIA</option>
+                                        <option value="university">UNIVERSIDAD (EN CURSO)</option>
+                                        <option value="graduate">GRADUADO</option>
+                                        <option value="bootcamp">BOOTCAMP</option>
+                                        <option value="autodidact">AUTODIDACTA</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">EXPERIENCIA:</label>
+                                    <select name="experience" class="terminal-select" required>
+                                        <option value="">SELECCIONA...</option>
+                                        <option value="none">SIN EXPERIENCIA</option>
+                                        <option value="personal">PROYECTOS PERSONALES</option>
+                                        <option value="freelance">FREELANCE</option>
+                                        <option value="junior">1-2 AÑOS</option>
+                                        <option value="mid">2-4 AÑOS</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">PORTAFOLIO (URL):</label>
+                                    <input type="url" name="portfolio" class="terminal-input" 
+                                           placeholder="HTTPS://TU-PORTAFOLIO.COM">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">CV (DRIVE/DROPBOX URL):</label>
+                                    <input type="url" name="cv" class="terminal-input" required 
+                                           placeholder="HTTPS://DRIVE.GOOGLE.COM/...">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">¿POR QUÉ IDEADEX STUDIO? (MIN 100 CHARS)</label>
+                                    <textarea name="motivation" class="terminal-textarea" required 
+                                              rows="4" placeholder="CUÉNTANOS TU MOTIVACIÓN..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">HABILIDADES (SEPARADAS POR COMAS):</label>
+                                    <input type="text" name="skills" class="terminal-input" required 
+                                           placeholder="UNITY, C#, BLENDER...">
+                                </div>
+
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="terms" required>
+                                        <span>ACEPTO LOS TÉRMINOS DEL PROGRAMA</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="action-btn submit-btn">
+                                        [ENVIAR APLICACIÓN]
+                                    </button>
+                                    <button type="button" class="action-btn cancel-btn" onclick="cancelApplication()">
+                                        [CANCELAR]
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Benefits Section -->
+                        <div class="benefits-section">
+                            <div class="section-divider">
+                                ═══════════════════════════════════
+                            </div>
+                            <div class="section-title">► BENEFICIOS DEL PROGRAMA</div>
+                            <div class="benefits-grid">
+                                <div class="benefit-item">
+                                    <span class="benefit-icon">💰</span>
+                                    <span class="benefit-text">REMUNERACIÓN COMPETITIVA</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon">🎓</span>
+                                    <span class="benefit-text">MENTORSHIP PROFESIONAL</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon">🏢</span>
+                                    <span class="benefit-text">TRABAJO REMOTO/HÍBRIDO</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="benefit-icon">🎮</span>
+                                    <span class="benefit-text">ACCESO A TODOS LOS JUEGOS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="terminal-footer">
+                            <a href="index.html" class="back-link">[← VOLVER AL MENU PRINCIPAL]</a>
+                        </div>
+                    </div>
+
+                    <div class="scanlines"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="console-logo">
+            <div class="logo-quantum">QUANTUM</div>
+            <div class="logo-subtitle">RECRUITMENT SYSTEM</div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content terminal-modal">
+            <div class="modal-header">
+                <div class="ascii-art">
+                   ╔═══════════════════════╗
+                   ║   APLICACIÓN ENVIADA  ║
+                   ╚═══════════════════════╝
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="success-message">
+                    TU APLICACIÓN HA SIDO REGISTRADA EN EL SISTEMA.
+                </p>
+                <p class="success-message">
+                    TE CONTACTAREMOS PRONTO.
+                </p>
+                <div class="loading-bar">
+                    <div class="loading-fill"></div>
+                </div>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">
+                [OK]
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
